@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+  }
+  
+  ul,
+  li {
+  list-style-type: none;
+  padding: 0;
+  }
+  
+  
+  .gridBody * {
+   /* padding: 10px, 15px; */
+   font-size: 15px;
+   /* border: 1px, solid, blue; */
+  }
+  
+  .gridBody {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+    "aside header"
+    "aside main"
+    "aside footer";
+  }
+  
+  header {
+    grid-area: header;
+    background-color: rgb(6, 122, 122);
+  }
+  
+  .headerBody {
+  
+  border-radius: 1%;
+  }
+  
+  aside {
+    grid-area: aside;
+    /* background-color: bisque; */
+  }
+  
+  main {
+    grid-area: main;
+    background-color: rgb(178, 202, 207);
+    }
+  
+  footer {
+    grid-area: footer;
+    background-color: rgb(178, 202, 207);
+    padding: 5px 10px;
+  }
+  
+  .footerBody {
+    border-radius: 5px;
+    height: 100%;
+    background-color: rgb(6, 122, 122);
+  }
+  
+  .asideLeft {
+  height: 100%;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    }
+  
+  .asideLeft div:hover {
+    background-color: rgb(194, 194, 211);
+    border-color: rgb(194, 194, 211);
+  }
+  
+    .leftMenu div {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .leftMenu img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  }
+  
+  .leftMenu a {
+  display: block;
+  }
+  
+  .gridMain {
+  padding: 5px;
+  height: 100%;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 150px 1fr;
+  grid-template-areas: 
+  "mainHeader mainHeader"
+  "mainBodyLeft mainBodyRight";
+  }
+  
+  .gridMain div {
+    border-radius: 1%;
+  }
+  
+  .mainHeader {
+    background-color: rgb(224, 243, 245);
+  grid-area: mainHeader;
+  /* border: 1px solid black; */
+  
+  }
+  
+  .mainBodyLeft {
+      background-color: rgb(224, 243, 245);
+    grid-area: mainBodyLeft;
+    /* border: 1px solid rgb(0, 0, 0); */
+  }
+  
+  .mainBodyLeftTask div {
+    /* border: 1px solid black; */
+  }
+  .mainBodyLeftTask {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+  }
+  
+  .taskTitle h1 {
+    font-size: 25px;
+    margin: 0;
+    }
+  
+    .table-task {
+      margin-top: 25px;
+    }
+  
+  /* Таблица для вывода списка задач */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+  }
+  th {
+      background-color: #f2f2f2; /* Цвет заголовка */
+  }
+  tr:nth-child(even) {
+      background-color: #e9e9e9; /* цвет для четных строк */
+  }
+  tr:nth-child(odd) {
+      background-color: #d0d0d0; /* цвет для нечетных строк */
+  }
+  
+  .mainBodyRight {
+    padding: 10px;
+    background-color: rgb(224, 243, 245);
+    grid-area: mainBodyRight;
+    /* border: 1px solid black; */
+  }
+  
+    .iframe-kalendar {
+      border: 2px solid rgb(6, 122, 122); /* Задаем рамку */
+      width: 500px; /* Ширина 100% */
+      height: 450px; /* Высота 500 пикселей */
+      border-radius: 10px; /* Закругленные углы */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+  }
+  
+  
+  .sub-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-menu a {
+    display: block;
+}
+
+.sub-menu li {
+    margin: 10px 0;
+}
+
+.leftMenuIcon2, .leftMenuIcon3, .leftMenuIcon4 {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftMenuIcon2 img, .leftMenuIcon3 img, .leftMenuIcon4 img {
+    display: block;
+    width: 25px;
+    height: 25px;
+}  
+  
