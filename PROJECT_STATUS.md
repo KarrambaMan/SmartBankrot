@@ -195,3 +195,52 @@
 | Примечание                     | `notes`                  | `TEXT`               | |
 | Служебное: Дата создания       | `created_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
 | Служебное: Дата обновления     | `updated_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
+
+#### Таблицы БД (SQL) - Дополнение
+| Объект                     | Имя таблицы (SQL)      | По-русски           |
+| :------------------------- | :--------------------- | :------------------ |
+| Кредиторы                  | `creditors`            | `Кредиторы`         |
+| Требования кредиторов      | `creditor_claims`      | `ТребованияКредиторов` |
+
+#### Поля таблицы `creditors`
+| Объект (русский)               | Имя поля (SQL)           | Тип данных (PG)      | Комментарий |
+| :----------------------------- | :----------------------- | :------------------- | :---------- |
+| Уникальный ID                  | `id`                     | `SERIAL PRIMARY KEY` | |
+| **Ссылка на дело**             | `case_id`                | `INTEGER NOT NULL`   | `REFERENCES bankruptcy_cases(id) ON DELETE CASCADE` |
+| **Тип кредитора**              | `creditor_type`          | `VARCHAR(20)`        | `individual` (физ. лицо), `legal` (юр. лицо), `entrepreneur` (ИП) |
+| **Полное наименование / ФИО**  | `full_name`              | `VARCHAR(500)`       | |
+| **ИНН**                        | `inn`                    | `VARCHAR(12)`        | |
+| **КПП**                        | `kpp`                    | `VARCHAR(9)`         | Только для юр. лиц |
+| **ОГРН / ОГРНИП**              | `ogrn`                   | `VARCHAR(15)`        | |
+| **Адрес юридический**          | `legal_address`          | `TEXT`               | |
+| **Адрес почтовый**             | `postal_address`         | `TEXT`               | Для корреспонденции |
+| **Email контактный**           | `contact_email`          | `VARCHAR(255)`       | |
+| **Телефон контактный**         | `contact_phone`          | `VARCHAR(50)`        | |
+| **Статус в деле**              | `status`                 | `VARCHAR(50)`        | `claimed` (заявлено), `included` (включено в реестр), `rejected` (отклонено), `disputed` (оспаривается) |
+| **Дата включения в реестр**    | `inclusion_date`         | `DATE`               | |
+| **Основание требования**       | `claim_basis`            | `TEXT`               | Договор займа, кредитный договор и т.д. |
+| **Дата возникновения требования** | `claim_origin_date`   | `DATE`               | |
+| **Очередность требования**     | `claim_priority`         | `INTEGER`            | `1`, `2`, `3`, `5` (вне очереди) |
+| **Признак залогового требования** | `is_secured`          | `BOOLEAN`            | `TRUE` / `FALSE` |
+| **Описание залогового имущества** | `pledged_asset_description` | `TEXT`        | |
+| **Общая сумма требований**     | `total_claim_amount`     | `NUMERIC(20, 2)`     | Сумма в рублях |
+| **Процент погашения**          | `repayment_percentage`   | `NUMERIC(5, 2)`      | Рассчитанный процент |
+| **Сумма погашения**            | `repaid_amount`          | `NUMERIC(20, 2)`     | Выплаченная сумма |
+| **Реквизиты для перечисления** | `bank_account_details`   | `TEXT`               | Банковские реквизиты |
+| **Примечание**                 | `notes`                  | `TEXT`               | |
+| **Дата создания**              | `created_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
+| **Дата обновления**            | `updated_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
+
+#### Поля таблицы `creditor_claims`
+| Объект (русский)       | Имя поля (SQL)       | Тип данных (PG)    | Комментарий |
+| :--------------------- | :------------------- | :----------------- | :---------- |
+| Уникальный ID          | `id`                 | `SERIAL PRIMARY KEY` | |
+| **Ссылка на кредитора**| `creditor_id`        | `INTEGER NOT NULL` | `REFERENCES creditors(id) ON DELETE CASCADE` |
+| **Основание требования**| `basis`              | `TEXT`             | |
+| **Сумма требования**   | `amount`             | `NUMERIC(20, 2)`   | |
+| **Валюта требования**  | `currency`           | `VARCHAR(10)`      | `RUB` (по умолчанию) |
+| **Дата возникновения** | `origin_date`        | `DATE`             | |
+| **Очередность**        | `priority`           | `INTEGER`          | |
+| **Статус требования**  | `status`             | `VARCHAR(50)`      | `claimed`, `approved`, `rejected` |
+| **Процент погашения**  | `repayment_percent`  | `NUMERIC(5, 2)`    | |
+| **Сумма погашения**    | `repaid_amount`      | `NUMERIC(20, 2)`   | |
