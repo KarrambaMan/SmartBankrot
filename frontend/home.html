@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Styles.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <title>Фиксированное меню</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="main-menu">
+            <button class="menu-button" data-page="home">
+                <img src="Img/home_icon.svg" alt="Главная">
+                <span class="tooltip">Главная страница</span>
+            </button>
+            
+            <div class="divider"></div>
+            
+            <button class="menu-button" data-page="procedures">
+                <img src="Img/menu.svg" alt="Процедуры">
+                <span class="tooltip">Процедуры общая</span>
+            </button>
+            
+            <!-- Фиксированное подменю -->
+            <button class="menu-button submenu-button" data-page="rtk">
+                <img src="Img/finance_icon.svg" alt="Реестр требований кредиторов">
+                <span class="tooltip">Реестр требований кредиторов</span>
+            </button>
+            <button class="menu-button submenu-button" data-page="property">
+                <img src="Img/finance_icon.svg" alt="Имущество и торги">
+                <span class="tooltip">Имущество и торги</span>
+            </button>
+            <button class="menu-button submenu-button" data-page="finance">
+                <img src="Img/finance_icon.svg" alt="Финансы">
+                <span class="tooltip">Финансы</span>
+            </button>
+            
+            <div class="divider"></div>
+            
+            <button class="menu-button" data-page="statistic">
+                <img src="Img/ruble_icon.svg" alt="Статистика">
+                <span class="tooltip">Всякая статистика</span>
+            </button>
+            
+            <div class="divider"></div>
+            
+            <button class="menu-button" data-page="chat">
+                <img src="Img/finance_icon.svg" alt="Чаты с партнерами">
+                <span class="tooltip">Пообщаться, запросить чего</span>
+            </button>
+        </div>
+    </aside>
+
+    <header>
+        <h1 id="header-title">Заголовок</h1>
+        <button id="logoutBtn" class="logout-button">Выйти</button>
+    </header>
+
+    <main id="content">
+        <div class="task">
+            <div class="mainHeader">
+                <div class="mainHeaderLeft"></div>
+                <div class="mainHeaderRight"></div>
+            </div>
+             <div class="mainBodyLeft">
+                <div class="mainBodyLeftTask">
+                    <div class="taskTitle"><h1>Список задач</h1></div>
+                    <div class="sortTaskTime">Сортировать по времени:</div>
+                    <div class="sortTaskCategory">Сортировать по задаче:</div>  
+                </div>
+                <div class="table-task">
+                    <table>
+                        <thead>
+                                <tr>
+                                    <th>Должник</th>
+                                    <th>№ дела</th>
+                                    <th>Задача</th>
+                                    <th>Важность</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Иванов И.И.</td>
+                                    <td>12345</td>
+                                    <td>Подготовка документов</td>
+                                    <td>Высокая</td>
+                                </tr>
+                                <tr>
+                                    <td>Петров П.П.</td>
+                                    <td>67890</td>
+                                    <td>Судебное заседание</td>
+                                    <td>Средняя</td>
+                                </tr>
+                                <tr>
+                                    <td>Сидоров С.С.</td>
+                                    <td>54321</td>
+                                    <td>Консультация клиента</td>
+                                    <td>Низкая</td>
+                                </tr>
+                                <tr>
+                                    <td>Кузнецов К.К.</td>
+                                    <td>98765</td>
+                                    <td>Сбор доказательств</td>
+                                    <td>Высокая</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="mainBodyRight">
+                <iframe class="iframe-kalendar" src="https://calendar.google.com/calendar/embed?height=450&wkst=2&ctz=Asia%2FNovosibirsk&showPrint=0&src=a2lyaWxsLnJ1MTk3NkBnbWFpbC5jb20&src=dXJzb3VzbmFjaGFsbzRAZ21haWwuY29t&color=%237986CB&color=%23F4511E"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Ваш сайт. Все права защищены.</p>
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
