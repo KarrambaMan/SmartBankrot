@@ -132,3 +132,34 @@
 | Кол-во иждивенцев      | `dependents_count`     | `INTEGER`          | |
 | Флаг "Умер"            | `is_deceased`          | `BOOLEAN`          | |
 | Дата смерти            | `death_date`           | `DATE`             | |
+
+#### Таблицы БД (SQL) - Дополнение
+| Объект                 | Имя таблицы (SQL)      | По-русски           |
+| :--------------------- | :--------------------- | :------------------ |
+| Супруги должников      | `spouses`              | Супруги             |
+
+#### Поля таблицы `spouses`
+| Объект (русский)               | Имя поля (SQL)           | Тип данных (PG)      | Комментарий |
+| :----------------------------- | :----------------------- | :------------------- | :---------- |
+| Уникальный ID                  | `id`                     | `SERIAL PRIMARY KEY` | |
+| **Ссылка на должника**         | `debtor_id`              | `INTEGER NOT NULL UNIQUE` | `REFERENCES debtors(id) ON DELETE CASCADE` |
+| Фамилия                        | `last_name`              | `VARCHAR(255)`       | |
+| Имя                            | `first_name`             | `VARCHAR(255)`       | |
+| Отчество                       | `patronymic`             | `VARCHAR(255)`       | |
+| Дата рождения                  | `birth_date`             | `DATE`               | |
+| СНИЛС                          | `snils_number`           | `VARCHAR(14)`        | |
+| ИНН                            | `inn_number`             | `VARCHAR(12)`        | |
+| Серия паспорта                 | `passport_series`        | `VARCHAR(4)`         | |
+| Номер паспорта                 | `passport_number`        | `VARCHAR(6)`         | |
+| Кем выдан паспорт              | `passport_issued_by`     | `TEXT`               | |
+| Дата выдачи паспорта           | `passport_issue_date`    | `DATE`               | |
+| Код подразделения              | `passport_department_code` | `VARCHAR(7)`       | |
+| Адрес регистрации              | `passport_registration_address` | `TEXT`        | |
+| **Статус брака**               | `marital_status`         | `VARCHAR(20)`        | `married`, `divorced` |
+| **Дата регистрации брака**     | `marriage_date`          | `DATE`               | |
+| **Дата расторжения брака**     | `divorce_date`           | `DATE`               | `NULL`, если брак действует |
+| Номер телефона                 | `phone_number`           | `VARCHAR(50)`        | |
+| Адрес электронной почты        | `email_address`          | `VARCHAR(255)`       | |
+| Примечание                     | `notes`                  | `TEXT`               | |
+| Служебное: Дата создания       | `created_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
+| Служебное: Дата обновления     | `updated_at`             | `TIMESTAMP`          | `DEFAULT CURRENT_TIMESTAMP` |
