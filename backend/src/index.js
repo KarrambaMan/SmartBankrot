@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 const { Pool } = require('pg'); 
 
@@ -16,6 +17,8 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
+
 
 // Тестовый маршрут
 app.get('/api/test', (req, res) => {
@@ -38,4 +41,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
   console.log(`📊 API тест: http://localhost:${PORT}/api/test`);
   console.log(`👥 API должники: http://localhost:${PORT}/api/debtors`);
+  console.log(`🌐 Разрешены запросы с: ${process.env.FRONTEND_URL}`);
 });
